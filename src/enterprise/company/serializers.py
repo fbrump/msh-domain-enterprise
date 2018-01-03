@@ -15,7 +15,7 @@ class CompanySerializer(serializers.Serializer):
 			Created new object and return validation.
 		"""
 		return Company.objects.create(**validated_data)
-	def updated(self, instance, validated_data):
+	def update(self, instance, validated_data):
 		"""
 			Updated object instance and given validated data.
 		"""
