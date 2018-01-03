@@ -12,7 +12,7 @@ class Company(models.Model):
 	name = models.CharField(max_length=100)
 	cnpj = models.CharField(max_length=15)
 	description = models.TextField(blank=True)
-	url = models.URLField(max_length=500)
+	url = models.URLField(max_length=500, blank=True)
 
 	class Meta:
 		odering = ('name',)
