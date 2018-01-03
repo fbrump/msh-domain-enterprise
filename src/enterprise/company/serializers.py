@@ -7,7 +7,7 @@ class CompanySerializer(serializers.Serializer):
 	code = serializers.UUIDField(format='hex', read_only=True)
 	name = serializers.CharField(min_length=3, max_length=100)
 	cnpj = serializers.CharField(max_length=15)
-	description = serializers.CharField()
+	description = serializers.CharField(allow_blank=True)
 	url = serializers.URLField(max_length=500, allow_blank=True)
 	
 	def create(self, validated_data):
