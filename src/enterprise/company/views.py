@@ -6,8 +6,10 @@ from rest_framework.parsers import JSONParser
 from company.models import Company
 from company.serializers import CompanySerializer
 
+@csrf_exempt
 def company_list(request):
 	"""
+		Method that list all companies and add new company.
 	"""
 	if request.method == 'GET':
 		companies = Company.objects.all()
