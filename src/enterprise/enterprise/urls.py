@@ -17,11 +17,13 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 from rest_framework_swagger.views import get_swagger_view
+from rest_framework.documentation import include_docs_urls
 
-chema_view = get_swagger_view(title='Domain Enterprise API')
+schema_view = get_swagger_view(title='Domain Enterprise API')
 
 urlpatterns = [
-	url(r'^$', schema_view),
+	url(r'^docs/swagger/$', schema_view),
+    url(r'^docs/api/', include_docs_urls(title='My API title', authentication_classes=[], permission_classes=[])),
 	url(r'^api/', include('company.urls')),
     path('admin/', admin.site.urls),
 ]
