@@ -13,3 +13,5 @@ class Position(models.Model):
 
 	class Meta:
 		pass
+	def __repr__(self):
+		return self.code + ' - ' + self.name
