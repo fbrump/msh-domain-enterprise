@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 
     'enterprise',
     'company',
+    'position',
 ]
 
 MIDDLEWARE = [
@@ -111,6 +112,13 @@ SWAGGER_SETTINGS = {
             'type': 'basic'
         }
     },
+}
+
+REST_FRAMEWORK = {
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_PERMISSION_CLASSES': [],
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
 }
 
 # Internationalization

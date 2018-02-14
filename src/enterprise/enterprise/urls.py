@@ -25,5 +25,6 @@ urlpatterns = [
 	url(r'^docs/swagger/$', schema_view),
     url(r'^docs/api/', include_docs_urls(title='My API title', authentication_classes=[], permission_classes=[])),
 	url(r'^api/', include('company.urls')),
+    url(r'^api/', include('position.urls')),
     path('admin/', admin.site.urls),
 ]
