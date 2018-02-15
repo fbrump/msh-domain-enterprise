@@ -61,3 +61,31 @@ class GetSinglePositionTest(TestCase):
 		# asserts
 		self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)
 
+class CreateNewPositionTest(TestCase):
+	""" Test module for inserting a new position """
+	
+	def setUp(self):
+		self.valid_payload = {
+			'name': 'P.O.',
+			'description': 'Product Owner of project'
+		}
+		self.invalid_payload = {
+			'name': '',
+			'description': ''
+		}
+
+	def test_create_valid_position(self):
+		response = client.post(
+			reverse('get_post_position'),
+			data=json.dumps(self.valid_payload),
+			content_type='application/json'
+		)
+		self.assertEqual(response.status_code, status.HTTP_201_CREATED)
+
+	def test_create_invalid_position(self):
+		response = client.post(
+			reverse('get_post_position'),
+			data=json.dumps(self.invalid_payload),
+			content_type='application/json'
+		)
+		self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
