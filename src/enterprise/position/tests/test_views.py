@@ -11,7 +11,6 @@ from ..serializers import PositionSerializer
 # initialize the API client app
 client = Client()
 
-
 class GetAllPositionsTest(TestCase):
 	""" Test module for GET all positions API """
 	
