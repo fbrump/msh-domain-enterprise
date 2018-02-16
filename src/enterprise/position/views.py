@@ -18,7 +18,11 @@ def get_delete_update_postion(request, code):
 	elif request.method == 'DELETE':
 		return Response({})
 	elif request.method == 'PUT':
-		return Response({})
+		serialiser = PositionSerializer(position, data=request.data)
+		if serialiser.is_valid():
+			serialiser.save()
+			return Response(serialiser.data, status=status.HTTP_204_NO_CONTENT)
+		return Response(serialiser.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET', 'POST'])
 def get_post_position(request):
