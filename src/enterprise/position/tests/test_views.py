@@ -88,3 +88,33 @@ class CreateNewPositionTest(TestCase):
 			content_type='application/json'
 		)
 		self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+class UpdateSinglePositionTest(TestCase):
+	""" Test module for updating an existing position record """
+	def setUp(self):
+		self.webDeveloper = Position.objects.create(name='Web Developer', description='Developer web solutions')
+		self.frontendDeveloper = Position.objects.create(name='Frontend Developer')
+
+		self.valid_payload = {
+			'name': 'Angular Developer',
+			'description': 'Frontend working with Angular 4+'
+		}
+		self.invalid_payload = {
+			'name': ''
+			'description': 'Anonimo'
+		}
+
+	def test_valid_update_position(self):
+		response = client.put(
+			reverse('get_delete_update_postion'),
+			data=json.dumps(self.valid_payload),
+			content_type='application/json'
+		)
+		self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+	def test_invalid_update_position(self):
+		response = client.put(
+			reverse('get_delete_update_postion'),
+			data=json.dumps(self.invalid_payload),
+			content_type='application/json'
+		)
