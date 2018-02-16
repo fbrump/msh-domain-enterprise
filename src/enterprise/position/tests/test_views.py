@@ -100,13 +100,13 @@ class UpdateSinglePositionTest(TestCase):
 			'description': 'Frontend working with Angular 4+'
 		}
 		self.invalid_payload = {
-			'name': ''
+			'name': '',
 			'description': 'Anonimo'
 		}
 
 	def test_valid_update_position(self):
 		response = client.put(
-			reverse('get_delete_update_postion'),
+			reverse('get_delete_update_postion', kwargs={'code': self.webDeveloper.code}),
 			data=json.dumps(self.valid_payload),
 			content_type='application/json'
 		)
@@ -114,7 +114,8 @@ class UpdateSinglePositionTest(TestCase):
 
 	def test_invalid_update_position(self):
 		response = client.put(
-			reverse('get_delete_update_postion'),
+			reverse('get_delete_update_postion', kwargs={'code': self.webDeveloper.code}),
 			data=json.dumps(self.invalid_payload),
 			content_type='application/json'
 		)
+		self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
