@@ -119,3 +119,21 @@ class UpdateSinglePositionTest(TestCase):
 			content_type='application/json'
 		)
 		self.assertEqual(response.status_code, status.HTTP_400_BAD_REQUEST)
+
+class DeleteSinglePositionTest(TestCase):
+	""" Test module for deleting an existing postiion record """
+	def setUp(self):
+		self.webDeveloper = Position.objects.create(name='Web Developer', description='Developer web solutions')
+		self.frontendDeveloper = Position.objects.create(name='Frontend Developer')
+
+	def test_valid_delete_position(self):
+		response = client.delete(
+			reverse('get_delete_update_postion', kwargs={'code': self.webDeveloper.code})
+		)
+		self.assertEqual(response.status_code, status.HTTP_204_NO_CONTENT)
+
+	def test_invalid_delete_position(self):
+		response = client.delete(
+			reverse('get_delete_update_postion', kwargs={'code': uuid.uuid4()})
+		)
+		self.assertEqual(response.status_code, status.HTTP_404_NOT_FOUND)

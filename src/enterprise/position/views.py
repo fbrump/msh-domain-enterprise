@@ -16,7 +16,8 @@ def get_delete_update_postion(request, code):
 		serialiser = PositionSerializer(position)
 		return Response(serialiser.data)
 	elif request.method == 'DELETE':
-		return Response({})
+		position.delete()
+		return Response(status=status.HTTP_204_NO_CONTENT)
 	elif request.method == 'PUT':
 		serialiser = PositionSerializer(position, data=request.data)
 		if serialiser.is_valid():
