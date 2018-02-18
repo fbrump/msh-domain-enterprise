@@ -12,6 +12,6 @@ class Position(models.Model):
 	description = models.TextField(blank=True)
 
 	class Meta:
-		pass
+		ordering = ('created',)
 	def __repr__(self):
 		return str(self.code) + ' - ' + self.name
