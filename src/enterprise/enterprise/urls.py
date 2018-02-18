@@ -16,8 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
+from rest_framework_swagger.views import get_swagger_view
+from rest_framework.documentation import include_docs_urls
+
+schema_view = get_swagger_view(title='Domain Enterprise API')
 
 urlpatterns = [
-	url(r'^api/', include('company.urls')),
+    # defaults
     path('admin/', admin.site.urls),
+    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    # docs
+	url(r'^docs/swagger/$', schema_view),
+    url(r'^docs/api/', include_docs_urls(title='My API title', authentication_classes=[], permission_classes=[])),
+    # domains
+	url(r'^api/', include('company.urls')),
+    url(r'^api/', include('position.urls')),
 ]

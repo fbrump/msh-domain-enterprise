@@ -1,7 +1,10 @@
 from django.conf.urls import url
-from company.views import company_list
+from rest_framework.urlpatterns import format_suffix_patterns
+from company.views import company_list, company_detail
 
 urlpatterns = [
-    url(r'^companies/$', company_list),
-    #url(r'^snippets/(?P<pk>[0-9]+)/$', views.snippet_detail),
+    url(r'^v1/companies/$', company_list),
+    url(r'^v1/companies/(?P<code>[0-9-a-z-A-Z]+)/$', company_detail),
 ]
+
+urlpatterns = format_suffix_patterns(urlpatterns)
