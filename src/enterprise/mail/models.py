@@ -17,7 +17,7 @@ class Mail(models.Model):
 
 	created = models.DateTimeField(auto_now_add=True)
 	code = models.UUIDField(default=uuid.uuid4, editable=False)
-	name = models.CharField(max_length=100)
+	address = models.EmailField(max_length=100)
 	type_mail = models.IntegerField(
 		choices=TYPES_CHOICES,
 		default=TYPE_PERSONAL,
@@ -25,3 +25,21 @@ class Mail(models.Model):
 	
 	class Meta:
 		abstract = True
+
+class MailManager(Mail):
+    """
+    Description: Model for mail of Manager
+    """
+    
+
+    class Meta:
+        pass
+
+class MailEmployeer(Mail):
+    """
+    Description: Model for mail of employeer
+    """
+    
+
+    class Meta:
+        pass
