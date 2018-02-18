@@ -12,7 +12,7 @@ class Mail(models.Model):
 	TYPE_PROFESSIONAL = 2
 	TYPES_CHOICES = (
 		(TYPE_PERSONAL, "Personal"),
-		(TYPE_PROFESSIONAL, "Progessional"),
+		(TYPE_PROFESSIONAL, "Professional"),
 	)
 
 	created = models.DateTimeField(auto_now_add=True)
