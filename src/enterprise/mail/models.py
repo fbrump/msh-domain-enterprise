@@ -33,7 +33,7 @@ class MailManager(Mail):
     
 
     class Meta:
-        pass
+        ordering = ('created',)
 
 class MailEmployeer(Mail):
     """
@@ -42,4 +42,4 @@ class MailEmployeer(Mail):
     
 
     class Meta:
-        pass
+        ordering = ('created',)
