@@ -35,6 +35,7 @@ class MailEmployeerTest(TestCase):
 		# assert
 		self.assertIsNotNone(mail_find)
 		self.assertEqual(mail_find.type_mail, Mail.TYPE_PROFESSIONAL)
+		self.assertEqual(str(mail_find), mail_address)
 	def test_find_one_object_not_exists(self):
 		# arrange
 		mail_address = 'margarita.banks@company.com'
@@ -83,6 +84,7 @@ class MailManagerTest(TestCase):
 		# assert
 		self.assertIsNotNone(mail_find)
 		self.assertEqual(mail_find.type_mail, Mail.TYPE_PROFESSIONAL)
+		self.assertEqual(str(mail_find), mail_address)
 	def test_find_one_object_not_exists(self):
 		# arrange
 		mail_address = 'margarita.banks@company.com'

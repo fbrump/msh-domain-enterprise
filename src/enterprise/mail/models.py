@@ -27,19 +27,23 @@ class Mail(models.Model):
 		abstract = True
 
 class MailManager(Mail):
-    """
-    Description: Model for mail of Manager
-    """
-    
+	"""
+	Description: Model for mail of Manager
+	"""
+	
 
-    class Meta:
-        ordering = ('created',)
+	class Meta:
+		ordering = ('created',)
+	def __str__(self):
+		return self.address
 
 class MailEmployeer(Mail):
-    """
-    Description: Model for mail of employeer
-    """
-    
+	"""
+	Description: Model for mail of employeer
+	"""
+	
 
-    class Meta:
-        ordering = ('created',)
+	class Meta:
+		ordering = ('created',)
+	def __str__(self):
+		return self.address
