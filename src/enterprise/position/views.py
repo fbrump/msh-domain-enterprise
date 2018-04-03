@@ -1,4 +1,5 @@
 # enterprise/position/views.py
+#from rest_framework_swagger.renderers import OpenAPIRenderer, SwaggerUIRenderer
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework import status
@@ -6,7 +7,14 @@ from .models import Position
 from .serializers import PositionSerializer
 
 @api_view(['GET', 'DELETE', 'PUT'])
+#@renderer_classes([SwaggerUIRenderer, OpenAPIRenderer])
 def get_delete_update_postion(request, code):
+	"""
+		Method that delete, update and get one position.
+
+		Def:
+			code - GUID identify positons for work.
+	"""
 	try:
 		position = Position.objects.get(code=code)
 	except Position.DoesNotExist as e:
@@ -27,6 +35,9 @@ def get_delete_update_postion(request, code):
 
 @api_view(['GET', 'POST'])
 def get_post_position(request):
+	"""
+		Method that get all positions and add new postion.
+	"""
 	if request.method == 'GET':
 		positions = Position.objects.all()
 		serializers = PositionSerializer(positions, many=True)
