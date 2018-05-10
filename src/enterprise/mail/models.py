@@ -1,6 +1,7 @@
 from django.db import models
-# from dj.choices import Choices
 import uuid
+
+from persona.models import Employee
 
 class Mail(models.Model):
 	"""
@@ -41,7 +42,7 @@ class MailEmployeer(Mail):
 	"""
 	Description: Model for mail of employeer
 	"""
-	
+	employee = models.ForeignKey(Employee, on_delete=models.CASCADE)
 
 	class Meta:
 		ordering = ('created',)
