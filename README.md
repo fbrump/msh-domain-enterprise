@@ -5,26 +5,15 @@ Link to main project: [Domain Objects](https://github.com/fbrump/msh/blob/master
 
 Propose models:
 
-- Employee (Persona - Like Manager)
+- Employee (Persona - ~Manager~)
   * id
   * code
   * name
   * birth date
   * Position (ref.)
   * Company (ref.)
-  * Contact Mail (ref.)
-  * List Contact Phone (ref.)
-
-~
-- Manager
-  * id
-  * code
-  * name
-  * Position (ref.)
-  * Company (ref.)
-  * Contact Mail (ref.)
-  * List Contact Phone (ref.)
-~
+  * ~Contact Mail (ref.)~
+  * List Contact Phone (ref.)
 
 - Contact Phone (~Employer~ Contact Phone)
   * id
