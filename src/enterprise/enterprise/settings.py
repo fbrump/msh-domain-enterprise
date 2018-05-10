@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'company',
     'position',
     'mail',
+    'persona',
 ]
 
 MIDDLEWARE = [
